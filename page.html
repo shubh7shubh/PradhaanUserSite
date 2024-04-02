@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pradhaan || Home One || App Landing HTML Template</title>
+    <meta property="og:image"><img src="..files/assets/images/team/new logo.jpg" alt="" />
+    <!-- favicon -->
+    <link rel="IMG-20231205-WA0027" sizes="180x180" href="assets/images/favicons/IMG-20231205-WA0027.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/logo4.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/logo3.jpg">
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+    <!-- plugin scripts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/apton-icons.css">
+
+    <!-- theme styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <link rel="stylesheet" href="path/to/animate.css">
+    <link rel="stylesheet" href="path/to/your-style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
+    <style>
+        .small-url {
+            display: inline-block;
+            max-width: 150px; /* Adjust as needed */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #popup-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+    /* Styles for the overlay background */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+    </style>
+
+
+</head>
+
+<body >
+
+    <div class="preloader">
+        <img src="assets/images/IMG-20231205-WA0027.jpg" width="75" class="preloader__image" alt="">
+    </div><!-- /.preloader -->
+
+    <div class="page-wrapper">
+        <header class="site-header-one stricky site-header-one__fixed-top">
+            <div class="container-fluid">
+                <div class="site-header-one__logo">
+                    <div class="logo-size">
+                        <a href="index.html">
+                            <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                        </a>
+                        <h1>radhaan</h1>
+                    </div>
+                    <p>Your Place. Your Voice. Your Leadership</p>
+
+                    <span class="side-menu__toggler"><i class="fa fa-bars"></i></span><!-- /.side-menu__toggler -->
+                </div><!-- /.site-header-one__logo -->
+                <h1 style="text-align: center; margin-left: 20%; color: black;
+                font-weight: bold;
+                font-family: 'Times New Roman', Times, serif;" >ADMIN DASHBOARD</h1>
+                <div class="main-nav__main-navigation">
+                    <!-- /.main-nav__navigation-box -->
+                </div><!-- /.main-nav__main-navigation -->
+                
+                <div class="main-nav__right">
+                    
+                    <a href="dashboard.html"
+                        class="thm-btn main-nav__btn-two" target="_blank" rel="noopener noreferrer">
+                        <span>ADD POST</span>
+                    </a>
+                </div><!-- /.main-nav__right -->
+
+            </div><!-- /.container-fluid -->
+        </header><!-- /.site-header-one -->
+
+        <table class="table" style="margin-top: 8%; margin-left: 5%; margin-right: 4%;">
+            <thead>
+                <th>Sno</th>
+                <th>State</th>
+                <th>District</th>
+                <th>Data</th>
+                <th>Video URL</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+        <!-- Button trigger modal
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Launch demo modal
+      </button> -->
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+            import { getDatabase, ref, get, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    
+    
+            const firebaseConfig = {
+                apiKey: "AIzaSyAFyifc_ALsj8v6ZZTFuLihZ3zX0mtbJ2g",
+                  authDomain: "dashboard-a9c7d.firebaseapp.com",
+                  projectId: "dashboard-a9c7d",
+                  storageBucket: "dashboard-a9c7d.appspot.com",
+                  messagingSenderId: "979849043728",
+                  appId: "1:979849043728:web:feaa0b9c464f93555d4f95"
+                };
+    
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+    
+            function GetAllDataOnce(){
+                const dbRef = ref(db, "news");
+                get(dbRef).then((snapshot) => {
+                    const news = [];
+                    snapshot.forEach((childSnapshot) => {
+                        news.push({...childSnapshot.val(), key: childSnapshot.key}); // Include key in data
+                    });
+                    AddAllItemsToTable(news);
+                });
+            }
+            function deleteEntry(key) {
+                const dbRef = ref(db, `news/${key}`);
+                remove(dbRef).then(() => {
+                    GetAllDataOnce(); // Reload data after deletion
+                }).catch((error) => {
+                    console.error("Error removing document: ", error);
+                });
+            }
+            function truncateUrl(url, maxLength) {
+        if (url.length > maxLength) {
+            return `<a href="${url}" target="_blank">${url.substring(0, maxLength - 3)}...</a>`; // Display ellipsis (...) at the end
+        }
+        return `<a href="${url}" target="_blank">${url}</a>`;
+    }     function AddAllItemsToTable(news){
+                const tbody = document.getElementById('tbody1');
+                tbody.innerHTML = ""; // Clear previous table rows
+                let stdNo = 0;
+                news.forEach((element) => {
+                    const { state, district, data ,video,key} = element;
+                    const trow = document.createElement('tr');
+                    const td1 = document.createElement('td');
+                    const td2 = document.createElement('td');
+                    const td3 = document.createElement('td');
+                    const td4 = document.createElement('td');
+                    const td5 = document.createElement('td');
+                    const td6 = document.createElement('td');
+                    td1.textContent = ++stdNo;
+                    td2.textContent = state;
+                    td3.textContent = district;
+                    td4.textContent = data;
+                    td5.innerHTML = `<a href="#" data-url="${video}" class="small-url">${video}</a>`;
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.addEventListener('click', () => deleteEntry(key)); // Delete entry when clicked
+                    td6.appendChild(deleteButton);
+                    trow.appendChild(td1);
+                    trow.appendChild(td2);
+                    trow.appendChild(td3);
+                    trow.appendChild(td4);
+                    trow.appendChild(td5);
+                    trow.appendChild(td6);
+                    tbody.appendChild(trow);
+                });
+            }
+    
+            window.onload = function(){
+                GetAllDataOnce();
+                document.getElementById('tbody1').addEventListener('click', function(event) {
+                    const target = event.target;
+                    if (target.matches('.small-url')) {
+                        const fullUrl = target.getAttribute('data-url');
+                        window.open(fullUrl, '_blank');
+                    }
+                });
+            };
+        </script>
+        
+
+        
+
+        <footer class="site-footer">
+            
+            <div class="site-footer__bottom">
+                <div class="container text-center">
+                    <p>© copyright 2024 by Ioninks.com</p>
+                </div><!-- /.container -->
+            </div><!-- /.site-footer__bottom -->
+        </footer><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <div class="side-menu__block">
+        <div class="side-menu__block-overlay custom-cursor__overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.side-menu__block-overlay -->
+        <div class="side-menu__block-inner ">
+            <div class="side-menu__top justify-content-end">
+
+                <a href="#" class="side-menu__toggler side-menu__close-btn"><img
+                        src="assets/images/shapes/close-1-1.png" alt=""></a>
+            </div><!-- /.side-menu__top -->
+
+
+            <nav class="mobile-nav__container">
+                <!-- content is loading via js -->
+            </nav>
+            <div class="side-menu__sep"></div><!-- /.side-menu__sep -->
+            <div class="side-menu__content">
+                <p>Lorem Ipsum is simply dummy text the printing and setting industry. Lorm Ipsum has been the
+                    industry's stanard dummy text ever. </p>
+                <p><a href="mailto:needhelp@apton.com">needhelp@apton.com</a> <br> <a href="tel:888-999-0000">888 999
+                        0000</a></p>
+                <div class="side-menu__social">
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div><!-- /.side-menu__content -->
+        </div><!-- /.side-menu__block-inner -->
+    </div><!-- /.side-menu__block -->
+
+    <script src="assets/js/jquery-3.5.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

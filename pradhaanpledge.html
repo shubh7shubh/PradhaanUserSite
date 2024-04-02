@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Pledge</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/apton-icons.css">
+
+    <!-- theme styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .headline {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+        }
+
+        .displaydata {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="head"><u>PLEDGE</u></h1>
+    <div style="text-align: center;">
+        <p style="color: black; font-family: 'Times New Roman', Times, serif; font-size:30px ;">
+            <span class="head"><u>Election Pledge</u> : </span>
+        <p class="headline">
+            This election 2024, lets Join Pradhaan in making a pledge to showcase the true power of “We the People of
+            India” by making a Pledge that we VOTE. As we do so, lets NOT SHY AWAY from speaking our mind by
+            highlighting ONE IMPORTANT political issue at hand and make a clarion call to our fellow citizen for the
+            same. Read more.
+        </p>
+        </p>
+    </div>
+    <div class="container">
+        <div class="sponsor d-f sponsor1">
+            <section class="tab" id="sponsor">
+                <div class="sponsorsub">
+                    <div class="sponsor-form">
+                        <form id="organization-details-form" class="submit-form">
+                            <div>
+                                <label>Select State:</label>
+                                <select id="stateSelect" class='w-full'>
+                                    <option value="">Select State</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Select City:</label>
+                                <select id="citySelect">
+                                    <option value="">Select City</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Select Ward:</label>
+                                <select id="wardSelect">
+                                    <option value="">Select Ward</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="name">Name:</label>
+                                <input type="text" id="nameInput" placeholder="Enter Your Name" /><br />
+                            </div>
+                            <div>
+                                <label for="photo">Upload File:</label>
+                                <input type="file" id="fileInput" accept="image/*" /><br /><br />
+                            </div>
+                            <div>
+                                <label for="photo">Designation:</label>
+                                <input type="text" id="designationInput"
+                                    placeholder="Enter Your Designation" /><br /><br />
+                            </div>
+                            <div>
+                                <label for="signatureCheckbox">Include Signature:</label>
+                                <input type="checkbox" id="signatureCheckbox" onchange="toggleSignatureUpload()" />
+                            </div>
+                            <div id="nameInputcheck"  style="display: flex !important;">
+                                <label for="name">I Request my fellow citizen to vote for:</label>
+                                <input type="text" id="nameInput2" placeholder="Enter Your Name" /><br />
+                            </div>
+                            <div id="SampleInputcheck" class="displaydata" style="display: flex !important;">
+                                <label for="photo">Sample Photo:</label>
+                                <input type="file" id="SampleInput" accept="image/*" /><br /><br />
+                            </div>
+                            <div id="signatureUpload" class="displaydata">
+                                <label for="photo">Upload Signature:</label>
+                                <input type="file" id="signatureInput" accept="image/*" /><br /><br />
+                            </div>
+                            <button id="downloadButton">Download</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+    <script>
+        // Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCN2Q-jQqFJUzpHohPD16CJV4LwKg6nvf8",
+            authDomain: "chunaw-a66df.firebaseapp.com",
+            projectId: "chunaw-a66df",
+            storageBucket: "chunaw-a66df.appspot.com",
+            messagingSenderId: "379389559599",
+            appId: "1:379389559599:web:e3788d2d8872cf629d17da"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        // Function to fetch states based on the selected country
+        async function fetchStates() {
+            var selectedCountry = '1-India'; // Assuming the default country is India
+            var statesCollection = db.collection('location').doc(selectedCountry).collection('State');
+            var statesSnapshot = await statesCollection.get();
+            var statesSelect = document.getElementById('stateSelect');
+
+            statesSnapshot.forEach(function (doc) {
+                var option = document.createElement('option');
+                option.value = doc.id;
+                option.textContent = doc.id;
+                statesSelect.appendChild(option);
+            });
+        }
+
+        // Function to fetch cities based on the selected state
+        async function fetchCities() {
+            var selectedCountry = '1-India'; // Assuming the default country is India
+            var selectedState = document.getElementById('stateSelect').value;
+            var citiesCollection = db.collection('location').doc(selectedCountry).collection('State').doc(selectedState).collection('city');
+            var citiesSnapshot = await citiesCollection.get();
+            var citySelect = document.getElementById('citySelect');
+            citySelect.innerHTML = '<option value="">Select City</option>';
+
+            citiesSnapshot.forEach(function (doc) {
+                var option = document.createElement('option');
+                option.value = doc.id;
+                option.textContent = doc.id;
+                citySelect.appendChild(option);
+            });
+        }
+        // Function to toggle visibility of signature upload field based on checkbox state
+        window.onload = function () {
+            // Hide additional fields by default
+            document.getElementById("nameInputcheck").style.display = "none";
+            document.getElementById("SampleInputcheck").style.display = "none";
+            document.getElementById("signatureUpload").style.display = "none";
+        };
+
+        function toggleSignatureUpload() {
+            var checkbox = document.getElementById("signatureCheckbox");
+            var nameInputcheck = document.getElementById("nameInputcheck");
+            var SampleInputcheck = document.getElementById("SampleInputcheck");
+            var signatureUpload = document.getElementById("signatureUpload");
+
+            if (checkbox.checked) {
+                signatureUpload.style.display = "block";
+                SampleInputcheck.style.display = "block";
+                nameInputcheck.style.display = "block";
+            } else {
+                signatureUpload.style.display = "none";
+                SampleInputcheck.style.display = "none";
+                nameInputcheck.style.display = "none";
+            }
+        }
+
+
+
+        // Function to fetch wards based on the selected city
+        async function fetchWards() {
+            var selectedCountry = '1-India'; // Assuming the default country is India
+            var selectedState = document.getElementById('stateSelect').value;
+            var selectedCity = document.getElementById('citySelect').value;
+            var wardsCollection = db.collection('location').doc(selectedCountry).collection('State').doc(selectedState).collection('city').doc(selectedCity).collection('postal');
+            var wardsSnapshot = await wardsCollection.get();
+            var wardSelect = document.getElementById('wardSelect');
+            wardSelect.innerHTML = '<option value="">Select Ward</option>';
+
+            wardsSnapshot.forEach(function (doc) {
+                var option = document.createElement('option');
+                option.value = doc.id;
+                option.textContent = doc.id;
+                wardSelect.appendChild(option);
+            });
+        }
+
+        // Event listeners for state and city selection
+        document.getElementById('stateSelect').addEventListener('change', function () {
+            fetchCities();
+        });
+
+        document.getElementById('citySelect').addEventListener('change', function () {
+            fetchWards();
+        });
+
+        // Event listener for the download button
+        // Event listener for the download button
+        document.getElementById('downloadButton').addEventListener('click', function () {
+            // Get the selected values
+            var selectedState = document.getElementById('stateSelect').value;
+            var selectedCity = document.getElementById('citySelect').value;
+            var selectedWard = document.getElementById('wardSelect').value;
+            var name = document.getElementById('nameInput').value;
+            var name2 = document.getElementById('nameInput2').value;
+            var designation = document.getElementById('designationInput').value;
+            const fileInput = document.getElementById('fileInput').files[0];
+            const sampleInput = document.getElementById('SampleInput').files[0];
+            const signatureInput = document.getElementById('signatureInput').files[0];
+
+            // Store the selected values in local storage to pass them to the certificate page
+            localStorage.setItem('selectedState', selectedState);
+            localStorage.setItem('selectedCity', selectedCity);
+            localStorage.setItem('selectedWard', selectedWard);
+            localStorage.setItem('name', name);
+            localStorage.setItem('name2', name2);
+            localStorage.setItem('designation', designation);
+
+            // Validation based on checkbox state
+            var checkbox = document.getElementById("signatureCheckbox");
+            if (checkbox.checked) {
+                // Check if all required fields are filled
+                if (selectedState && selectedCity && selectedWard && name && name2 && designation && fileInput && sampleInput && signatureInput) {
+                    // Read files as base64 strings
+                    Promise.all([
+                        readFileAsBase64(fileInput),
+                        readFileAsBase64(sampleInput),
+                        readFileAsBase64(signatureInput)
+                    ]).then(([fileData, sampleData, signatureData]) => {
+                        localStorage.setItem('fileData', fileData);
+                        localStorage.setItem('sampleData', sampleData);
+                        localStorage.setItem('signatureData', signatureData);
+                        // Redirect to another page
+                        window.location.href = 'z.html';
+                    }).catch(error => {
+                        console.error('Error reading files:', error);
+                    });
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            } else {
+                // If checkbox is not checked, no need to validate additional fields
+                // Check if all required fields are filled except the additional ones
+                if (selectedState && selectedCity && selectedWard && name && designation && fileInput) {
+                    Promise.all([
+                        readFileAsBase64(fileInput)
+                    ]).then(([fileData]) => {
+                        localStorage.setItem('fileData', fileData);
+                        // Redirect to another page
+                        window.location.href = 'x.html';
+                    }).catch(error => {
+                        console.error('Error reading files:', error);
+                    });
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            }
+        });
+
+
+
+        // Fetch states on page load
+        function readFileAsBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+        fetchStates();
+
+    </script>
+</body>
+
+</html>

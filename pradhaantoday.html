@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pradhaan || Blog Page || App Landing HTML Template</title>
+    <!-- favicon -->
+    <link rel="IMG-20231205-WA0027" sizes="180x180" href="assets/images/favicons/IMG-20231205-WA0027.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/logo4.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/logo3.jpg">
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest">
+    <!-- plugin scripts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/apton-icons.css">
+
+    <!-- theme styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        #news-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            overflow-x: auto;
+            /* Enable horizontal scrollbar if needed */
+        }
+        .news-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .left-side {
+            width: 20%;
+            padding: 10px;
+            box-sizing: border-box;
+            /* border: 1px solid #ccc; */
+        }
+        .left-side p {
+            font-weight: bold;
+            /* Make the font bold */
+        }
+        .right-side {
+            width: 80%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            display: flex;
+            gap: 2;
+            /* Display videos horizontally */
+            overflow-x: auto;
+            /* Enable horizontal scrollbar if needed */
+        }
+        video {
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            /* Space between videos */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="preloader">
+        <img src="assets/images/IMG-20231205-WA0027.jpg" width="75" class="preloader__image" alt="">
+    </div><!-- /.preloader -->
+
+    <div class="page-wrapper">
+        <header class="site-header-one stricky">
+            <div class="container-fluid">
+                <div class="site-header-one__logo">
+                    <div class="logo-size">
+                        <a href="index.html">
+                            <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                        </a>
+                        <h1>radhaan</h1>
+                    </div>
+                    <p>Your Place. Your Voice. Your Leadership</p>
+                    <span class="side-menu__toggler"><i class="fa fa-bars"></i></span><!-- /.side-menu__toggler -->
+                </div><!-- /.site-header-one__logo -->
+                <div class="main-nav__main-navigation">
+                    <ul class="main-nav__navigation-box one-page-scroll-menu">
+                        <li class="scrollToLink">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="scrollToLink"><a href="pradhaantoday.html">Pradhaan Today</a></li>
+
+
+
+                        <li class="scrollToLink"><a href="Mission.html"> Mission</a></li>
+                        <li><a href="blog-details.html">Blog</a></li>
+                        <li class="scrollToLink"><a href="g22.html">G20</a></li>
+
+                        <li class="scrollToLink"><a href="sponsor.html">Sponsors</a></li>
+                        <li class="scrollToLink"><a href="Contact.html">Contact us</a></li>
+                    </ul><!-- /.main-nav__navigation-box -->
+                </div><!-- /.main-nav__main-navigation -->
+                <div class="main-nav__right">
+                    <a href="https://play.google.com/store/apps/details?id=com.ioninks.pradhaan&pli=1"
+                        class="thm-btn main-nav__btn-two" target="_blank" rel="noopener noreferrer">
+                        <span>Download App</span>
+                    </a>
+                </div><!-- /.main-nav__right -->
+            </div><!-- /.container-fluid -->
+        </header><!-- /.site-header-one -->
+
+        <section class="page-header">
+            <div class="container">
+                <h2>Pradhaan Today </h2>
+                <ul class="list-unstyled thm-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span>Pradhaan Today</span></li>
+                </ul><!-- /.list-unstyled -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+        <div class="mission_container">
+            <h1 style="text-align: center; color: #8b0000; font-family: 'Times New Roman', Times, serif;">Pradhaan Today
+            </h1><br><br>
+
+            <div style="display: flex; justify-content: space-between; flex-direction: row;">
+                <h1 class="city">Cities</h1>
+                <h1 class="news">News</h1>
+            </div>
+            <!-- <div id="cityContainer"> -->
+            <!-- Dynamic content will be added here -->
+            <!-- </div> -->
+            <div id="news-container" style=" margin: 0% ;"></div>
+
+            <!-- <script>
+           // Function to add city content dynamically
+function addCityContent(cityName, mediaUrl, mediaType, description, appLink) {
+    const cityContainer = document.getElementById('cityContainer');
+
+    // Create elements
+    const cityDiv = document.createElement('div');
+    cityDiv.classList.add('today_data');
+
+    const h2 = document.createElement('h2');
+    h2.textContent = cityName;
+    h2.className = "h";
+
+    const desDiv = document.createElement('div');
+    desDiv.classList.add('des');
+
+    if (mediaType === 'image') {
+        const img = document.createElement('img');
+        img.src = mediaUrl;
+        desDiv.appendChild(img);
+    } else if (mediaType === 'video') {
+        const video = document.createElement('video');
+        video.src = mediaUrl;
+        video.controls = true;
+        video.setAttribute('width', '100%');
+        video.setAttribute('height', '300px');
+        video.setAttribute('autoplay', 'false');
+        desDiv.appendChild(video);
+    }
+
+    const p = document.createElement('p');
+    p.innerHTML = `${description} <a href="${appLink}" target="_blank">Get the app to read more</a>`;
+
+    const readMore = document.createElement('span');
+    readMore.id = 'readMore';
+    readMore.textContent = 'Read More';
+    readMore.onclick = toggleReadMore;
+
+    const fullText = document.createElement('span');
+    fullText.id = 'fullText';
+    fullText.innerHTML = `${description} <a href="${appLink}" target="_blank">Get the app to read more</a>`;
+    fullText.style.display = 'none';
+
+    const readLess = document.createElement('span');
+    readLess.id = 'readLess';
+    readLess.textContent = 'Read Less';
+    readLess.onclick = toggleReadMore;
+    readLess.style.display = 'none';
+
+    // Append elements
+    p.appendChild(readMore);
+    p.appendChild(fullText);
+    p.appendChild(readLess);
+    desDiv.appendChild(p);
+    cityDiv.appendChild(h2);
+    cityDiv.appendChild(desDiv);
+    cityContainer.appendChild(cityDiv);
+}
+
+// Sample data
+const cityData = {
+    cityName: "Visakhapatnam",
+    mediaUrl: "assets/videos/visakhapatnam.mp4",
+    mediaType: "video",
+    description: "Pay User charges for Govt services at ward sachivalayam or online: GVMC",
+    appLink: "https://play.google.com/store/apps/details?id=com.ioninks.pradhaan"
+};
+
+const cityData2 = {
+    cityName: "Patna",
+    mediaUrl: "assets/videos/patna (2).mp4",
+    mediaType: "video",
+    description: "Patna Pirates: Pride of Patna:",
+    appLink: "https://play.google.com/store/apps/details?id=com.ioninks.pradhaan"
+};
+
+// Call the function with sample data
+addCityContent(cityData.cityName, cityData.mediaUrl, cityData.mediaType, cityData.description, cityData.appLink);
+addCityContent(cityData2.cityName, cityData2.mediaUrl, cityData2.mediaType, cityData2.description, cityData2.appLink);
+
+// Function to toggle Read More/Read Less
+function toggleReadMore() {
+    const readMore = document.getElementById('readMore');
+    const readLess = document.getElementById('readLess');
+    const fullText = document.getElementById('fullText');
+
+    if (fullText.style.display === 'none') {
+        readMore.style.display = 'none';
+        readLess.style.display = 'inline';
+        fullText.style.display = 'inline';
+    } else {
+        readMore.style.display = 'inline';
+        readLess.style.display = 'none';
+        fullText.style.display = 'none';
+    }
+}
+
+        </script> -->
+
+        <div id="news-container"></div>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+            import { getDatabase, ref, onValue, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+            import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyCN2Q-jQqFJUzpHohPD16CJV4LwKg6nvf8",
+                authDomain: "chunaw-a66df.firebaseapp.com",
+                projectId: "chunaw-a66df",
+                storageBucket: "chunaw-a66df.appspot.com",
+                messagingSenderId: "379389559599",
+                appId: "1:379389559599:web:e3788d2d8872cf629d17da"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            // const database = getDatabase(app);
+            // const database = getFirestore(app);
+            const firestore = getFirestore(app);
+
+            // const newsRef = ref(database, 'news');
+            const newsCollection = collection(firestore, 'news');
+
+
+            // onValue(newsRef, (snapshot) => {
+            //     const newsData = snapshot.val();
+            //     console.log(newsData);
+            //     displayNews(newsData);
+            // });
+
+            onSnapshot(newsCollection, (querySnapshot) => {
+                const newsData = [];
+                querySnapshot.forEach((doc) => {
+                    newsData.push({ id: doc.id, ...doc.data() });
+                });
+                console.log(newsData);
+                displayNews(newsData);
+            });
+
+            function displayNews(newsData) {
+                console.log("Fetched data:", newsData);
+                const newsContainer = document.getElementById("news-container");
+                const districts = {};
+                for (const key in newsData) {
+                    if (Object.hasOwnProperty.call(newsData, key)) {
+                        const newsItem = newsData[key];
+                        const district = newsItem.district;
+                        if (!districts[district]) {
+                            districts[district] = {
+                                state: newsItem.state,
+                                videos: []
+                            };
+                        }
+                        districts[district].videos.push(newsItem.video);
+                    }
+                }
+                for (const district in districts) {
+                    if (Object.hasOwnProperty.call(districts, district)) {
+                        const districtItem = districts[district];
+                        // console.log(districtItem, "district")
+                        const newsDiv = document.createElement("div");
+                        newsDiv.className = "news-item";
+                        const leftDiv = document.createElement("div");
+                        leftDiv.className = "left-side";
+                        leftDiv.innerHTML = `<p>${district}</p>`;
+                        const rightDiv = document.createElement("div");
+                        rightDiv.className = "right-side";
+                        districtItem.videos.forEach(video => {
+                            // console.log(video, "videoooooo")
+                            // const videoTag = document.createElement("video");
+                            // videoTag.style.minWidth = "320px";
+                            // videoTag.width = "320";
+                            // videoTag.height = "240";
+                            // videoTag.controls = true;
+                            // videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
+                            // rightDiv.appendChild(videoTag);
+                            if (video.toLowerCase().includes(".mp4")) {
+                                const videoTag = document.createElement("video");
+                                videoTag.style.minWidth = "320px";
+                                videoTag.width = "320";
+                                videoTag.height = "240";
+                                videoTag.controls = true;
+                                videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
+                                rightDiv.appendChild(videoTag);
+                            } else {
+                                const imgTag = document.createElement("img");
+                                imgTag.style.minWidth = "320px";
+                                imgTag.width = "320";
+                                imgTag.height = "240";
+                                imgTag.src = video;
+                                rightDiv.appendChild(imgTag);
+                            }
+                        });
+                        newsDiv.appendChild(leftDiv);
+                        newsDiv.appendChild(rightDiv);
+                        newsContainer.appendChild(newsDiv);
+                    }
+                }
+            }
+        </script>
+        </div>
+        </div>
+
+
+
+        <footer class="site-footer">
+            <div class="site-footer__upper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="footer-widget footer-widget__about">
+
+                                <div class="logo-size">
+                                    <a href="index.html">
+                                        <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                                    </a>
+                                    <h1>radhaan</h1>
+                                </div>
+                                <p>Your Place. Your Voice. Your Leadership</p>
+                                <p> Login to App to make and hear voices <br>right from your ward, district and
+                                    state.<br> Vote at the appand get the chance to<br> become Pradhaan of your area.
+                                </p>
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-4 -->
+
+                        <div class="col-lg-5">
+                            <div class="footer-widget__links-wrap">
+                                <div class="footer-widget">
+                                    <h3 class="footer-widget__title">Company</h3>
+                                    <ul class="list-unstyled footer-widget__links-list">
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Our Team</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="#">Services</a></li>
+                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
+                                </div><!-- /.footer-widget -->
+                                <div class="footer-widget">
+                                    <h3 class="footer-widget__title">Explore</h3>
+                                    <ul class="list-unstyled footer-widget__links-list">
+                                        <li><a href="#">News</a></li>
+                                        <li><a href="#">Features</a></li>
+                                        <li><a href="#">Download</a></li>
+                                        <li><a href="#">Free Trial</a></li>
+                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
+                                </div><!-- /.footer-widget -->
+                                <div class="footer-widget">
+                                    <h3 class="footer-widget__title">Links</h3>
+                                    <ul class="list-unstyled footer-widget__links-list">
+                                        <li><a href="#">Help</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Terms of Use</a></li>
+                                        <li><a href="#">Services</a></li>
+                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
+                                </div><!-- /.footer-widget -->
+                            </div><!-- /.footer-widget__links-wrap -->
+                        </div><!-- /.col-lg-5 -->
+                        <div
+                            class="col-lg-3 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-center justify-content-sm-center">
+                            <div class="footer-widget">
+                                <div class="footer-widget__social">
+                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </div><!-- /.footer-widget__social -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.col-lg-3 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.site-footer__upper -->
+            <div class="site-footer__bottom">
+                <div class="container text-center">
+                    <p>© copyright 2024 by Ioninks.com</p>
+                </div><!-- /.container -->
+            </div><!-- /.site-footer__bottom -->
+        </footer><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    <div class="side-menu__block">
+        <div class="side-menu__block-overlay custom-cursor__overlay">
+            <div class="cursor"></div>
+            <div class="cursor-follower"></div>
+        </div><!-- /.side-menu__block-overlay -->
+        <div class="side-menu__block-inner ">
+            <div class="side-menu__top justify-content-end">
+
+                <a href="#" class="side-menu__toggler side-menu__close-btn"><img
+                        src="assets/images/shapes/close-1-1.png" alt=""></a>
+            </div><!-- /.side-menu__top -->
+
+
+            <nav class="mobile-nav__container">
+                <!-- content is loading via js -->
+            </nav>
+            <div class="side-menu__sep"></div><!-- /.side-menu__sep -->
+            <div class="side-menu__content">
+                <p>Lorem Ipsum is simply dummy text the printing and setting industry. Lorm Ipsum has been the
+                    industry's stanard dummy text ever. </p>
+                <p><a href="mailto:needhelp@apton.com">needhelp@apton.com</a> <br> <a href="tel:888-999-0000">888 999
+                        0000</a></p>
+                <div class="side-menu__social">
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div><!-- /.side-menu__content -->
+        </div><!-- /.side-menu__block-inner -->
+    </div><!-- /.side-menu__block -->
+
+    <script src="assets/js/jquery-3.5.0.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
