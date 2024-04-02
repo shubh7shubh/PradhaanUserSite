@@ -269,7 +269,7 @@
         margin-top: 5%;
     }
 
-    #hidetext{
+    #hidetext {
         display: none;
     }
 
@@ -357,58 +357,62 @@
         }
 
     }
+
     @media screen and (max-width:767px) {
-        .certificate{
+        .certificate {
             max-width: 100% !important;
             height: auto !important;
         }
     }
+
     @media screen and (min-width:340) {
         .pledgehead>h5 {
             color: black;
-        font-size: clamp(.5rem, 2.2vw, 2rem);
-        letter-spacing: .4rem;
-        max-width: 80%;
-        margin-top: 75% !important;
+            font-size: clamp(.5rem, 2.2vw, 2rem);
+            letter-spacing: .4rem;
+            max-width: 80%;
+            margin-top: 75% !important;
+        }
     }
-    }
+
     @media (min-width: 600px) and (max-width:1130px) {
         .thetexttoshow {
             border: 2px solid red;
-        margin-top: 0%;
-        margin-bottom: 0%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 0 !important;
-    }
-    .thetexttoshow>p {
-        font-size: clamp(.4rem, 2.4vw, 2.2rem);
-        margin: -1% !important;
-        color: rgba(65, 74, 85, 1);
-        font-weight: 600;
-    }
-    
-    .address p {
-        font-size: clamp(.5rem, 1rem, 2rem);
-        margin-top: -5%;
-        font-weight: 600;
-        
-    }
-    .address1 {
-        margin-bottom: -5% !important;
-        border: 2px solid red;
-        color: #8b0000;
-    }
-    .address {
-        margin-top: -3%;
-    }
+            margin-top: 0%;
+            margin-bottom: 0%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 !important;
+        }
+
+        .thetexttoshow>p {
+            font-size: clamp(.4rem, 2.4vw, 2.2rem);
+            margin: -1% !important;
+            color: rgba(65, 74, 85, 1);
+            font-weight: 600;
+        }
+
+        .address p {
+            font-size: clamp(.5rem, 1rem, 2rem);
+            margin-top: -5%;
+            font-weight: 600;
+
+        }
+
+        .address1 {
+            margin-bottom: -5% !important;
+            border: 2px solid red;
+            color: #8b0000;
+        }
+
+        .address {
+            margin-top: -3%;
+        }
 
     }
-
-
 </style>
 
 <body>
@@ -437,6 +441,8 @@
                     <li class="scrollToLink"><a href="Mission.html"> Mission</a></li>
 
                     <li class="scrollToLink"><a href="Contact.html">Contact us</a></li>
+                    <li class="scrollToLink"><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li class="scrollToLink"><a href="terms-of-service.html">Terms of Service</a></li>
                 </ul><!-- /.main-nav__navigation-box -->
             </div><!-- /.main-nav__main-navigation -->
             <div class="main-nav__right">
@@ -450,21 +456,21 @@
     </header><!-- /.site-header-one -->
     <br /><br />
     <div class="set2">
-        <div class="certificate"> 
-           
-            <div class="certificate-bg" >
-                <img src="assets/images/x 16.png" alt="">
-                           </div>
-            <div class="certificate-details" >
-               
+        <div class="certificate">
 
-                
+            <div class="certificate-bg">
+                <img src="assets/images/x 16.png" alt="">
+            </div>
+            <div class="certificate-details">
+
+
+
                 <div class="onestimageandname">
                     <div id="fileImageContainer" class="userimage"></div>
                     <h1><span id="nameSpan"></span></h1>
                     <h6><span id="designationSpan"></span></h6>
                 </div>
-            
+
 
 
                 <div class="thesecondphoto">
@@ -484,10 +490,10 @@
                         <p class="address1"><span id="districtSpan"></span></p>
 
                     </div>
-                    
+
                     <div class="signclass">
                         <div id="signatureImageContainer" class="signimage"></div>
-                        
+
                     </div>
 
 
@@ -495,7 +501,7 @@
             </div>
 
 
-              
+
         </div>
 
 
@@ -504,10 +510,12 @@
         <button id="shareCertificate" class="thm-btn main-nav__btn-two" style="margin-right: 5%;"><span>Share
                 Certificate</span></button>
         <button id="downloadCertificate" class="thm-btn main-nav__btn-two"><span>Download Certificate</span></button>
-        <a href="assets/images/certificateblank.png" download><p>download2</p></a>
+        <a href="assets/images/certificateblank.png" download>
+            <p>download2</p>
+        </a>
 
-        
-     
+
+
     </div>
 
     <footer class="site-footer">
@@ -585,7 +593,7 @@
     </footer><!-- /.site-footer -->
 
     <script>
-      
+
         const name = localStorage.getItem('name');
         const name2 = localStorage.getItem('name2');
         const designation = localStorage.getItem('designation');
@@ -637,52 +645,52 @@
             }
         }
         function downloadCertificateAsImage() {
-    // Get the certificate container
-    let certificateContainer = document.querySelector('.certificate');
+            // Get the certificate container
+            let certificateContainer = document.querySelector('.certificate');
 
-    // Create a canvas element
-    let canvas = document.createElement('canvas');
-    let canvasWidth = certificateContainer.offsetWidth;
-    let canvasHeight = certificateContainer.offsetHeight;
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
+            // Create a canvas element
+            let canvas = document.createElement('canvas');
+            let canvasWidth = certificateContainer.offsetWidth;
+            let canvasHeight = certificateContainer.offsetHeight;
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
 
-    // Get the canvas context
-    let ctx = canvas.getContext('2d');
+            // Get the canvas context
+            let ctx = canvas.getContext('2d');
 
-    // Use html-to-image library to render the certificate container as an image on the canvas
-    htmlToImage.toPng(certificateContainer)
-        .then(function (dataUrl) {
-            // Create an image element
-            let img = new Image();
+            // Use html-to-image library to render the certificate container as an image on the canvas
+            htmlToImage.toPng(certificateContainer)
+                .then(function (dataUrl) {
+                    // Create an image element
+                    let img = new Image();
 
-            // When the image is loaded, draw it onto the canvas
-            img.onload = function() {
-                ctx.drawImage(img, 0, 0);
+                    // When the image is loaded, draw it onto the canvas
+                    img.onload = function () {
+                        ctx.drawImage(img, 0, 0);
 
-                // Convert the canvas to a data URL representing the image
-                const imageData = canvas.toDataURL('image/png');
+                        // Convert the canvas to a data URL representing the image
+                        const imageData = canvas.toDataURL('image/png');
 
-                // Create a temporary anchor element
-                const downloadLink = document.createElement('a');
-                downloadLink.href = imageData;
-                downloadLink.download = 'certificate.png'; // Set the file name for download
+                        // Create a temporary anchor element
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = imageData;
+                        downloadLink.download = 'certificate.png'; // Set the file name for download
 
-                // Append the anchor element to the body and trigger click
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
+                        // Append the anchor element to the body and trigger click
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();
 
-                // Remove the anchor element from the body
-                document.body.removeChild(downloadLink);
-            };
+                        // Remove the anchor element from the body
+                        document.body.removeChild(downloadLink);
+                    };
 
-            // Set the source of the image to the data URL
-            img.src = dataUrl;
-        })
-        .catch(function (error) {
-            console.error('Error generating image: ', error);
-        });
-}
+                    // Set the source of the image to the data URL
+                    img.src = dataUrl;
+                })
+                .catch(function (error) {
+                    console.error('Error generating image: ', error);
+                });
+        }
 
 
 
@@ -745,7 +753,7 @@
 
 
 
-        
+
 
 
         // Add click event listener to the download button
@@ -785,7 +793,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/0.9.1/html-to-image.min.js"></script>
-            
+
 
 
 </body>

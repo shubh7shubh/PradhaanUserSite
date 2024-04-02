@@ -349,53 +349,59 @@
             font-size: .65rem !important;
             text-align: center;
         }
-        .mar{
+
+        .mar {
             margin-left: -80%;
         }
 
     }
+
     @media screen and (min-width:340) {
         .pledgehead>h5 {
-        color: rgba(152, 0, 0, 1);
-        font-size: clamp(.5rem, 2.2vw, 2rem);
-        letter-spacing: .4rem;
-        max-width: 80%;
-        margin-top: 75% !important;
+            color: rgba(152, 0, 0, 1);
+            font-size: clamp(.5rem, 2.2vw, 2rem);
+            letter-spacing: .4rem;
+            max-width: 80%;
+            margin-top: 75% !important;
+        }
     }
-    }
+
     @media (min-width: 600px) and (max-width:1130px) {
         .thetexttoshow {
             border: 2px solid red;
-        margin-top: 0%;
-        margin-bottom: 0%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 0 !important;
-    }
-    .thetexttoshow>p {
-        font-size: clamp(.4rem, 2.4vw, 2.2rem);
-        margin: -1% !important;
-        color: rgba(65, 74, 85, 1);
-        font-weight: 600;
-    }
-    
-    .address p {
-        font-size: clamp(.5rem, 1rem, 2rem);
-        margin-top: -5%;
-        font-weight: 600;
-        
-    }
-    .address1 {
-        margin-bottom: -5% !important;
-        border: 2px solid red;
-        color: #8b0000;
-    }
-    .address {
-        margin-top: -3%;
-    }
+            margin-top: 0%;
+            margin-bottom: 0%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 !important;
+        }
+
+        .thetexttoshow>p {
+            font-size: clamp(.4rem, 2.4vw, 2.2rem);
+            margin: -1% !important;
+            color: rgba(65, 74, 85, 1);
+            font-weight: 600;
+        }
+
+        .address p {
+            font-size: clamp(.5rem, 1rem, 2rem);
+            margin-top: -5%;
+            font-weight: 600;
+
+        }
+
+        .address1 {
+            margin-bottom: -5% !important;
+            border: 2px solid red;
+            color: #8b0000;
+        }
+
+        .address {
+            margin-top: -3%;
+        }
 
 
     }
@@ -820,6 +826,8 @@
                     <li class="scrollToLink"><a href="Mission.html"> Mission</a></li>
 
                     <li class="scrollToLink"><a href="Contact.html">Contact us</a></li>
+                    <li class="scrollToLink"><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li class="scrollToLink"><a href="terms-of-service.html">Terms of Service</a></li>
                 </ul><!-- /.main-nav__navigation-box -->
             </div><!-- /.main-nav__main-navigation -->
             <div class="main-nav__right">
@@ -876,7 +884,7 @@
                         <div id="signatureImageContainer" class="signimage"></div>
                         <h1 class="mar">Signature</h1>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -1017,22 +1025,22 @@
             }
         }
         function downloadCertificateAsImage() {
-    // Use html2canvas to capture the content of the .certificate container
-    html2canvas(document.querySelector('.certificate'), {
-        scale: 2, // Increase scale for higher resolution
-        onrendered: function (canvas) {
-            // Convert the canvas to a data URL representing the image
-            const imageData = canvas.toDataURL('image/jpeg', 0.8); // Adjust quality to 0.8
+            // Use html2canvas to capture the content of the .certificate container
+            html2canvas(document.querySelector('.certificate'), {
+                scale: 2, // Increase scale for higher resolution
+                onrendered: function (canvas) {
+                    // Convert the canvas to a data URL representing the image
+                    const imageData = canvas.toDataURL('image/jpeg', 0.8); // Adjust quality to 0.8
 
-            // Create a temporary anchor element
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageData;
-            downloadLink.download = 'certificate.jpg'; // Set the file name for download
-            
-            downloadLink.click(); // Simulate click to trigger download
+                    // Create a temporary anchor element
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = imageData;
+                    downloadLink.download = 'certificate.jpg'; // Set the file name for download
+
+                    downloadLink.click(); // Simulate click to trigger download
+                }
+            });
         }
-    });
-}
 
 
 
@@ -1081,7 +1089,7 @@
 
 
 
-        
+
 
 
         // Add click event listener to the download button

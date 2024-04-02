@@ -33,20 +33,24 @@
             overflow-x: auto;
             /* Enable horizontal scrollbar if needed */
         }
+
         .news-item {
             display: flex;
             margin-bottom: 20px;
         }
+
         .left-side {
             width: 20%;
             padding: 10px;
             box-sizing: border-box;
             /* border: 1px solid #ccc; */
         }
+
         .left-side p {
             font-weight: bold;
             /* Make the font bold */
         }
+
         .right-side {
             width: 80%;
             padding: 10px;
@@ -58,6 +62,7 @@
             overflow-x: auto;
             /* Enable horizontal scrollbar if needed */
         }
+
         video {
             margin-right: 10px;
             border: 1px solid #ccc;
@@ -101,6 +106,8 @@
 
                         <li class="scrollToLink"><a href="sponsor.html">Sponsors</a></li>
                         <li class="scrollToLink"><a href="Contact.html">Contact us</a></li>
+                        <li class="scrollToLink"><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li class="scrollToLink"><a href="terms-of-service.html">Terms of Service</a></li>
                     </ul><!-- /.main-nav__navigation-box -->
                 </div><!-- /.main-nav__main-navigation -->
                 <div class="main-nav__right">
@@ -233,185 +240,185 @@ function toggleReadMore() {
 
         </script> -->
 
-        <div id="news-container"></div>
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-            import { getDatabase, ref, onValue, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-            import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+            <div id="news-container"></div>
+            <script type="module">
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+                import { getDatabase, ref, onValue, } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+                import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 
 
-            const firebaseConfig = {
-                apiKey: "AIzaSyCN2Q-jQqFJUzpHohPD16CJV4LwKg6nvf8",
-                authDomain: "chunaw-a66df.firebaseapp.com",
-                projectId: "chunaw-a66df",
-                storageBucket: "chunaw-a66df.appspot.com",
-                messagingSenderId: "379389559599",
-                appId: "1:379389559599:web:e3788d2d8872cf629d17da"
-            };
+                const firebaseConfig = {
+                    apiKey: "AIzaSyCN2Q-jQqFJUzpHohPD16CJV4LwKg6nvf8",
+                    authDomain: "chunaw-a66df.firebaseapp.com",
+                    projectId: "chunaw-a66df",
+                    storageBucket: "chunaw-a66df.appspot.com",
+                    messagingSenderId: "379389559599",
+                    appId: "1:379389559599:web:e3788d2d8872cf629d17da"
+                };
 
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            // const database = getDatabase(app);
-            // const database = getFirestore(app);
-            const firestore = getFirestore(app);
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                // const database = getDatabase(app);
+                // const database = getFirestore(app);
+                const firestore = getFirestore(app);
 
-            // const newsRef = ref(database, 'news');
-            const newsCollection = collection(firestore, 'news');
+                // const newsRef = ref(database, 'news');
+                const newsCollection = collection(firestore, 'news');
 
 
-            // onValue(newsRef, (snapshot) => {
-            //     const newsData = snapshot.val();
-            //     console.log(newsData);
-            //     displayNews(newsData);
-            // });
+                // onValue(newsRef, (snapshot) => {
+                //     const newsData = snapshot.val();
+                //     console.log(newsData);
+                //     displayNews(newsData);
+                // });
 
-            onSnapshot(newsCollection, (querySnapshot) => {
-                const newsData = [];
-                querySnapshot.forEach((doc) => {
-                    newsData.push({ id: doc.id, ...doc.data() });
+                onSnapshot(newsCollection, (querySnapshot) => {
+                    const newsData = [];
+                    querySnapshot.forEach((doc) => {
+                        newsData.push({ id: doc.id, ...doc.data() });
+                    });
+                    console.log(newsData);
+                    displayNews(newsData);
                 });
-                console.log(newsData);
-                displayNews(newsData);
-            });
 
-            function displayNews(newsData) {
-                console.log("Fetched data:", newsData);
-                const newsContainer = document.getElementById("news-container");
-                const districts = {};
-                for (const key in newsData) {
-                    if (Object.hasOwnProperty.call(newsData, key)) {
-                        const newsItem = newsData[key];
-                        const district = newsItem.district;
-                        if (!districts[district]) {
-                            districts[district] = {
-                                state: newsItem.state,
-                                videos: []
-                            };
-                        }
-                        districts[district].videos.push(newsItem.video);
-                    }
-                }
-                for (const district in districts) {
-                    if (Object.hasOwnProperty.call(districts, district)) {
-                        const districtItem = districts[district];
-                        // console.log(districtItem, "district")
-                        const newsDiv = document.createElement("div");
-                        newsDiv.className = "news-item";
-                        const leftDiv = document.createElement("div");
-                        leftDiv.className = "left-side";
-                        leftDiv.innerHTML = `<p>${district}</p>`;
-                        const rightDiv = document.createElement("div");
-                        rightDiv.className = "right-side";
-                        districtItem.videos.forEach(video => {
-                            // console.log(video, "videoooooo")
-                            // const videoTag = document.createElement("video");
-                            // videoTag.style.minWidth = "320px";
-                            // videoTag.width = "320";
-                            // videoTag.height = "240";
-                            // videoTag.controls = true;
-                            // videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
-                            // rightDiv.appendChild(videoTag);
-                            if (video.toLowerCase().includes(".mp4")) {
-                                const videoTag = document.createElement("video");
-                                videoTag.style.minWidth = "320px";
-                                videoTag.width = "320";
-                                videoTag.height = "240";
-                                videoTag.controls = true;
-                                videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
-                                rightDiv.appendChild(videoTag);
-                            } else {
-                                const imgTag = document.createElement("img");
-                                imgTag.style.minWidth = "320px";
-                                imgTag.width = "320";
-                                imgTag.height = "240";
-                                imgTag.src = video;
-                                rightDiv.appendChild(imgTag);
+                function displayNews(newsData) {
+                    console.log("Fetched data:", newsData);
+                    const newsContainer = document.getElementById("news-container");
+                    const districts = {};
+                    for (const key in newsData) {
+                        if (Object.hasOwnProperty.call(newsData, key)) {
+                            const newsItem = newsData[key];
+                            const district = newsItem.district;
+                            if (!districts[district]) {
+                                districts[district] = {
+                                    state: newsItem.state,
+                                    videos: []
+                                };
                             }
-                        });
-                        newsDiv.appendChild(leftDiv);
-                        newsDiv.appendChild(rightDiv);
-                        newsContainer.appendChild(newsDiv);
+                            districts[district].videos.push(newsItem.video);
+                        }
+                    }
+                    for (const district in districts) {
+                        if (Object.hasOwnProperty.call(districts, district)) {
+                            const districtItem = districts[district];
+                            // console.log(districtItem, "district")
+                            const newsDiv = document.createElement("div");
+                            newsDiv.className = "news-item";
+                            const leftDiv = document.createElement("div");
+                            leftDiv.className = "left-side";
+                            leftDiv.innerHTML = `<p>${district}</p>`;
+                            const rightDiv = document.createElement("div");
+                            rightDiv.className = "right-side";
+                            districtItem.videos.forEach(video => {
+                                // console.log(video, "videoooooo")
+                                // const videoTag = document.createElement("video");
+                                // videoTag.style.minWidth = "320px";
+                                // videoTag.width = "320";
+                                // videoTag.height = "240";
+                                // videoTag.controls = true;
+                                // videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
+                                // rightDiv.appendChild(videoTag);
+                                if (video.toLowerCase().includes(".mp4")) {
+                                    const videoTag = document.createElement("video");
+                                    videoTag.style.minWidth = "320px";
+                                    videoTag.width = "320";
+                                    videoTag.height = "240";
+                                    videoTag.controls = true;
+                                    videoTag.innerHTML = `<source src="${video}" type="video/mp4">`;
+                                    rightDiv.appendChild(videoTag);
+                                } else {
+                                    const imgTag = document.createElement("img");
+                                    imgTag.style.minWidth = "320px";
+                                    imgTag.width = "320";
+                                    imgTag.height = "240";
+                                    imgTag.src = video;
+                                    rightDiv.appendChild(imgTag);
+                                }
+                            });
+                            newsDiv.appendChild(leftDiv);
+                            newsDiv.appendChild(rightDiv);
+                            newsContainer.appendChild(newsDiv);
+                        }
                     }
                 }
-            }
-        </script>
+            </script>
         </div>
-        </div>
+    </div>
 
 
 
-        <footer class="site-footer">
-            <div class="site-footer__upper">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="footer-widget footer-widget__about">
+    <footer class="site-footer">
+        <div class="site-footer__upper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-widget footer-widget__about">
 
-                                <div class="logo-size">
-                                    <a href="index.html">
-                                        <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
-                                    </a>
-                                    <h1>radhaan</h1>
-                                </div>
-                                <p>Your Place. Your Voice. Your Leadership</p>
-                                <p> Login to App to make and hear voices <br>right from your ward, district and
-                                    state.<br> Vote at the appand get the chance to<br> become Pradhaan of your area.
-                                </p>
-                            </div><!-- /.footer-widget -->
-                        </div><!-- /.col-lg-4 -->
+                            <div class="logo-size">
+                                <a href="index.html">
+                                    <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                                </a>
+                                <h1>radhaan</h1>
+                            </div>
+                            <p>Your Place. Your Voice. Your Leadership</p>
+                            <p> Login to App to make and hear voices <br>right from your ward, district and
+                                state.<br> Vote at the appand get the chance to<br> become Pradhaan of your area.
+                            </p>
+                        </div><!-- /.footer-widget -->
+                    </div><!-- /.col-lg-4 -->
 
-                        <div class="col-lg-5">
-                            <div class="footer-widget__links-wrap">
-                                <div class="footer-widget">
-                                    <h3 class="footer-widget__title">Company</h3>
-                                    <ul class="list-unstyled footer-widget__links-list">
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">Our Team</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                        <li><a href="#">Services</a></li>
-                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
-                                </div><!-- /.footer-widget -->
-                                <div class="footer-widget">
-                                    <h3 class="footer-widget__title">Explore</h3>
-                                    <ul class="list-unstyled footer-widget__links-list">
-                                        <li><a href="#">News</a></li>
-                                        <li><a href="#">Features</a></li>
-                                        <li><a href="#">Download</a></li>
-                                        <li><a href="#">Free Trial</a></li>
-                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
-                                </div><!-- /.footer-widget -->
-                                <div class="footer-widget">
-                                    <h3 class="footer-widget__title">Links</h3>
-                                    <ul class="list-unstyled footer-widget__links-list">
-                                        <li><a href="#">Help</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Terms of Use</a></li>
-                                        <li><a href="#">Services</a></li>
-                                    </ul><!-- /.list-unstyled footer-widget__links-list -->
-                                </div><!-- /.footer-widget -->
-                            </div><!-- /.footer-widget__links-wrap -->
-                        </div><!-- /.col-lg-5 -->
-                        <div
-                            class="col-lg-3 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-center justify-content-sm-center">
+                    <div class="col-lg-5">
+                        <div class="footer-widget__links-wrap">
                             <div class="footer-widget">
-                                <div class="footer-widget__social">
-                                    <a href="#"><i class="fab fa-facebook-square"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                </div><!-- /.footer-widget__social -->
+                                <h3 class="footer-widget__title">Company</h3>
+                                <ul class="list-unstyled footer-widget__links-list">
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Services</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links-list -->
                             </div><!-- /.footer-widget -->
-                        </div><!-- /.col-lg-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </div><!-- /.site-footer__upper -->
-            <div class="site-footer__bottom">
-                <div class="container text-center">
-                    <p>© copyright 2024 by Ioninks.com</p>
-                </div><!-- /.container -->
-            </div><!-- /.site-footer__bottom -->
-        </footer><!-- /.site-footer -->
+                            <div class="footer-widget">
+                                <h3 class="footer-widget__title">Explore</h3>
+                                <ul class="list-unstyled footer-widget__links-list">
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Features</a></li>
+                                    <li><a href="#">Download</a></li>
+                                    <li><a href="#">Free Trial</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links-list -->
+                            </div><!-- /.footer-widget -->
+                            <div class="footer-widget">
+                                <h3 class="footer-widget__title">Links</h3>
+                                <ul class="list-unstyled footer-widget__links-list">
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Terms of Use</a></li>
+                                    <li><a href="#">Services</a></li>
+                                </ul><!-- /.list-unstyled footer-widget__links-list -->
+                            </div><!-- /.footer-widget -->
+                        </div><!-- /.footer-widget__links-wrap -->
+                    </div><!-- /.col-lg-5 -->
+                    <div
+                        class="col-lg-3 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-center justify-content-sm-center">
+                        <div class="footer-widget">
+                            <div class="footer-widget__social">
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </div><!-- /.footer-widget__social -->
+                        </div><!-- /.footer-widget -->
+                    </div><!-- /.col-lg-3 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.site-footer__upper -->
+        <div class="site-footer__bottom">
+            <div class="container text-center">
+                <p>© copyright 2024 by Ioninks.com</p>
+            </div><!-- /.container -->
+        </div><!-- /.site-footer__bottom -->
+    </footer><!-- /.site-footer -->
     </div><!-- /.page-wrapper -->
 
 

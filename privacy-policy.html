@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pradhaan || Blog Page || App Landing HTML Template</title>
+    <title>Pradhaan</title>
     <!-- favicon -->
     <link rel="IMG-20231205-WA0027" sizes="180x180" href="assets/images/favicons/IMG-20231205-WA0027.jpg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/logo4.jpg">
@@ -40,7 +40,7 @@
                 <div class="site-header-one__logo">
                     <div class="logo-size">
                         <a href="index.html">
-                            <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                            <img id="logo" src="assets/images/new logo (2).jpg" alt="logo">
                         </a>
                         <h1>radhaan</h1>
                     </div>
@@ -79,10 +79,10 @@
 
         <section class="page-header">
             <div class="container">
-                <h2>Sponsors </h2>
+                <h2>Privacy Policy </h2>
                 <ul class="list-unstyled thm-breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li><span>Sponsors</span></li>
+                    <li><span>Privacy Policy</span></li>
                 </ul><!-- /.list-unstyled -->
             </div><!-- /.container -->
         </section><!-- /.page-header -->
@@ -90,99 +90,34 @@
         <section class="service-one" id="features">
             <div class="container">
 
+                <p style="color:black">M/s Santot Social Opc Pvt ltd had built the Pradhaan app as a Free app. This
+                    SERVICE is provided by
+                    M/s Santot Social OPC pvt ltd at no cost and is intended for use as is.</p>
+                <p style="color:black">This page is used to inform visitors regarding our policies with the Privacy and
+                    disclosure of
+                    Personal Information if anyone decided to use the Service.</p>
+                <p style="color:black">Our Company is committed to Privacy of our users in all terms and is committed to
+                    all international
+                    standards of Privacy of Individual or Organization.</p>
+                <p style="color:black; font-size:20px;font-weight:bold">Children’s Privacy</p>
+                <p style="color:black">These Services do not address anyone under the age of 13. I do not knowingly
+                    collect personally identifiable information from children under 13 years of age. In the case I
+                    discover that a child under 13 has provided me with personal information, I immediately delete this
+                    from our servers. If you are a parent or guardian and you are aware that your child has provided us
+                    with personal information, please contact me so that I will be able to do the necessary actions.</p>
+                <p style="color:black; font-size:20px;font-weight:bold">
+                    Changes to This Privacy Policy
+                </p>
+                <p style="color:black">We may update our Privacy Policy from time to time. Thus, you are advised to
+                    review this page periodically for any changes. I will notify you of any changes by posting the new
+                    Privacy Policy on this page.</p>
+                <p style="color:black; font-size:20px;font-weight:bold">
+                    Contact Us
+                </p>
+                <p style="color:black">If you have any questions or suggestions about my Privacy Policy, do not hesitate
+                    to contact me at chunawinindia@gmail.com</p>
 
-                <div class="sponsor d-f sponsor1">
-                    <section class="tab" id="sponsor">
-                        <h2 class="head" style="margin-top: 2%;">Sponsorship Details</h2>
 
-                        <!-- Organization Details Form -->
-                        <div class="sponsorsub">
-                            <div class="sponsor-form">
-                                <form id="organization-details-form" class="submit-form">
-                                    <div>
-                                        <label for="org-name">Organization Name:</label>
-                                        <input type="text" id="org-name" name="org_name"
-                                            placeholder="Enter Organization Name" required><br />
-                                    </div>
-                                    <div>
-                                        <label for="name">Name:</label>
-                                        <input type="text" id="contact" name="contact" placeholder="Enter Your Name"
-                                            required><br />
-                                    </div>
-                                    <div>
-                                        <label for="email">Email ID:</label>
-                                        <input type="email" id="contact" name="contact" placeholder="Enter Your Email"
-                                            required><br />
-                                    </div>
-                                    <div>
-                                        <label for="contact">Contact Information:</label>
-                                        <input type="text" id="contact" name="contact" placeholder="Enter Your Ph.No"
-                                            required><br />
-                                    </div>
-                                    <!-- Add more organization details fields as needed -->
-
-                                    <button class="banner-one__mc-btn" type="button"
-                                        onclick="showPaymentForm()">Continue to Payment</button>
-                                </form>
-                            </div>
-
-                            <!-- Payment Form -->
-                            <div class="payment-form" style="display: none;">
-                                <h3 class="head">Payment Details</h3>
-                                <div class="process">
-                                    <!-- Stripe Card Element -->
-                                    <div id="card-element"></div>
-
-                                    <!-- Display payment errors -->
-                                    <div id="card-errors" role="alert"></div>
-                                    <div>
-                                        <button id="submit-payment" class="banner-one__mc-btn" type="button"
-                                            onclick="submitPayment()">Submit Payment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- JavaScript for Stripe integration -->
-                    <script src="https://js.stripe.com/v3/"></script>
-                    <script>
-                        let stripe = Stripe('your_stripe_public_key');
-                        let elements = stripe.elements();
-                        let card = elements.create('card');
-
-                        card.mount('#card-element');
-
-                        function showPaymentForm() {
-                            document.querySelector('.sponsor-form').style.display = 'none';
-                            document.querySelector('.payment-form').style.display = 'block';
-                        }
-
-                        function submitPayment() {
-                            stripe.createToken(card).then(function (result) {
-                                if (result.error) {
-                                    // Display error to your customer
-                                    var errorElement = document.getElementById('card-errors');
-                                    errorElement.textContent = result.error.message;
-                                } else {
-                                    // Send the token to your server
-                                    fetch('your_server_endpoint', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({ token: result.token.id }),
-                                    })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            // Handle server response (success or error)
-                                            console.log(data);
-                                        });
-                                }
-                            });
-                        }
-                    </script>
-                </div>
             </div>
 
     </div><!-- /.container -->
@@ -198,7 +133,7 @@
 
                             <div class="logo-size">
                                 <a href="index.html">
-                                    <img id="logo" src="../files/assets/images/new logo (2).jpg" alt="logo">
+                                    <img id="logo" src="assets/images/new logo (2).jpg" alt="logo">
                                 </a>
                                 <h1>radhaan</h1>
                             </div>
@@ -239,15 +174,24 @@
                             </div><!-- /.footer-widget -->
                         </div><!-- /.footer-widget__links-wrap -->
                     </div><!-- /.col-lg-5 -->
+
                     <div
                         class="col-lg-3 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-center justify-content-sm-center">
+
                         <div class="footer-widget">
+                            <div>
+                                <p class="footer-widget__title">Contact Number: +91 7780172009</p>
+                                <p class="footer-widget__title">Email: pradhaaninindia@gmail.com</p>
+                            </div><br>
+
                             <div class="footer-widget__social">
                                 <a href="#"><i class="fab fa-facebook-square"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
                                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            </div><!-- /.footer-widget__social -->
+                            </div>
+                            <br><!-- /.footer-widget__social -->
+
                         </div><!-- /.footer-widget -->
                     </div><!-- /.col-lg-3 -->
                 </div><!-- /.row -->
@@ -283,10 +227,10 @@
             </nav>
             <div class="side-menu__sep"></div><!-- /.side-menu__sep -->
             <div class="side-menu__content">
-                <p>Lorem Ipsum is simply dummy text the printing and setting industry. Lorm Ipsum has been the
-                    industry's stanard dummy text ever. </p>
-                <p><a href="mailto:needhelp@apton.com">needhelp@apton.com</a> <br> <a href="tel:888-999-0000">888 999
-                        0000</a></p>
+                <p>Login to App to make and hear voices right from your ward, district and state. Vote at the appand get
+                    the chance to become Pradhaan of your area. </p>
+                <p><a href="pradhaaninindia@gmail.com">pradhaaninindia@gmail.com</a> <br> <a href="+91 7780172009">+91
+                        7780172009</a></p>
                 <div class="side-menu__social">
                     <a href="#"><i class="fab fa-facebook-square"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
